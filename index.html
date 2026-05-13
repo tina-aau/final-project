@@ -1,16 +1,406 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Website Template</title>
-	<link rel="stylesheet" href="./assets/css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matcha Society</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon"><i data-lucide="leaf"></i></div>
+                <span>Matcha Society</span>
+            </a>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Make Matcha</a>
+                <a href="#rewards" class="nav-link">Rewards</a>
+                <a href="#saved" class="nav-link">Saved Recipes</a>
+            </div>
+        </div>
+    </nav>
 
-	<h1>Website Template</h1>
-	<p>Fork and use this template repo (a.k.a. "boilerplate") for any web project</p>
-	<img src="assets/img/cat.jpg" alt="">
+    <main>
+        <!-- Home / Whisking Section -->
+        <section id="home" class="section-home">
+            <div class="background-decor">
+                <div class="decor-bubble decor-1"></div>
+                <div class="decor-bubble decor-2"></div>
+                <div class="decor-icon decor-heart"><i data-lucide="heart"></i></div>
+                <div class="decor-icon decor-leaf"><i data-lucide="leaf"></i></div>
+                <div class="decor-icon decor-sparkles"><i data-lucide="sparkles"></i></div>
 
-	<script src="./assets/js/main.js"></script>
+                <div class="decor-pearl pearl-1"></div>
+                <div class="decor-pearl pearl-2"></div>
+                <div class="decor-pearl pearl-3"></div>
+
+                <div class="decor-sticker sticker-matcha">100% Matcha</div>
+                <div class="decor-sticker sticker-cute">Cute! ✨</div>
+            </div>
+
+            <div class="container text-center relative z-10">
+                <h1 class="title">Whisk the Matcha</h1>
+                <p class="subtitle">Tap to make your matcha smooth and frothy.</p>
+
+                <div class="progress-container">
+                    <div class="progress-labels">
+                        <span class="step-label">Step 1 of 5</span>
+                        <span class="froth-label"><span id="whisk-percent">0</span>% Frothy</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="whisk-progress" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+
+                <div class="game-area">
+                    <div class="bowl-container" id="bowl-btn">
+                        <div class="bowl-shadow"></div>
+                        <div class="bowl-shell">
+                            <div class="bowl-rim-base"></div>
+                            <div id="liquid-level" class="bowl-liquid-level"></div>
+                            <div class="bowl-froth"></div>
+                            <div class="bowl-face">
+                                <span class="bowl-eye"></span>
+                                <span class="bowl-eye"></span>
+                            </div>
+                            <div class="bowl-smile"></div>
+                        </div>
+                        <div id="whisk" class="whisk">
+                            <span class="whisk-handle"></span>
+                            <span class="whisk-head">
+                                <span class="whisk-prong"></span>
+                                <span class="whisk-prong"></span>
+                                <span class="whisk-prong"></span>
+                                <span class="whisk-prong"></span>
+                                <span class="whisk-prong"></span>
+                                <span class="whisk-prong"></span>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div id="perfect-badge" class="perfect-badge hidden">
+                        ✨ Perfectly Frothy!
+                    </div>
+                </div>
+
+                <div class="action-area">
+                    <div class="score-badge">
+                        Whisk Score: <span id="score-text">Not Started</span>
+                    </div>
+                    <button id="whisk-btn" class="btn btn-primary btn-large">
+                        <i data-lucide="droplets"></i> Whisk Now
+                    </button>
+                    <button id="next-btn" class="btn btn-outline btn-large hidden">
+                        Next: Choose Matcha Base
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="choose-matcha" class="section-toppings hidden-section">
+            <div class="container text-center">
+                <div class="progress-container">
+                    <div class="progress-labels">
+                        <span class="step-label">Step 2 of 5</span>
+                        <span class="froth-label">Matcha Type</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 40%;"></div>
+                    </div>
+                </div>
+
+                <h2 class="title">Choose Matcha Type</h2>
+                <p class="subtitle">Pick the base that defines your drink.</p>
+
+                <div class="toppings-grid">
+                    <button class="topping-card choice-card" data-group="matchaType" data-value="classic-matcha" type="button">Classic Matcha</button>
+                    <button class="topping-card choice-card" data-group="matchaType" data-value="strawberry-matcha" type="button">Strawberry Matcha</button>
+                    <button class="topping-card choice-card" data-group="matchaType" data-value="iced-matcha-latte" type="button">Iced Matcha Latte</button>
+                    <button class="topping-card choice-card" data-group="matchaType" data-value="dirty-matcha" type="button">Dirty Matcha</button>
+                </div>
+
+                <div class="action-grid toppings-actions">
+                    <button id="back-to-whisking-btn" class="btn btn-white btn-half">← Back to Whisking</button>
+                    <button id="to-ice-btn" class="btn btn-dark btn-half">Next: Ice →</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="choose-ice" class="section-toppings hidden-section">
+            <div class="container text-center">
+                <div class="progress-container">
+                    <div class="progress-labels">
+                        <span class="step-label">Step 3 of 5</span>
+                        <span class="froth-label">Ice Level</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 60%;"></div>
+                    </div>
+                </div>
+
+                <h2 class="title">Choose Ice Amount</h2>
+                <p class="subtitle">Adjust how chilled your matcha should be.</p>
+
+                <div class="toppings-grid">
+                    <button class="topping-card choice-card" data-group="iceLevel" data-value="ice-low" type="button">Low Ice</button>
+                    <button class="topping-card choice-card" data-group="iceLevel" data-value="ice-medium" type="button">Medium Ice</button>
+                    <button class="topping-card choice-card" data-group="iceLevel" data-value="ice-high" type="button">High Ice</button>
+                </div>
+
+                <div class="action-grid toppings-actions">
+                    <button id="back-to-matcha-btn" class="btn btn-white btn-half">← Back</button>
+                    <button id="to-sweetness-btn" class="btn btn-dark btn-half">Next: Sweetness →</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="choose-sweetness" class="section-toppings hidden-section">
+            <div class="container text-center">
+                <div class="progress-container">
+                    <div class="progress-labels">
+                        <span class="step-label">Step 4 of 5</span>
+                        <span class="froth-label">Sweetness</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+
+                <h2 class="title">Choose Sweetness</h2>
+                <p class="subtitle">Balance earthy matcha with your sweetness level.</p>
+
+                <div class="toppings-grid">
+                    <button class="topping-card choice-card" data-group="sweetness" data-value="sweet-low" type="button">Low Sweetness</button>
+                    <button class="topping-card choice-card" data-group="sweetness" data-value="sweet-medium" type="button">Medium Sweetness</button>
+                    <button class="topping-card choice-card" data-group="sweetness" data-value="sweet-high" type="button">High Sweetness</button>
+                </div>
+
+                <div class="action-grid toppings-actions">
+                    <button id="back-to-ice-btn" class="btn btn-white btn-half">← Back</button>
+                    <button id="to-foam-btn" class="btn btn-dark btn-half">Next: Foam/Topping →</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="choose-foam" class="section-toppings hidden-section">
+            <div class="container text-center">
+                <div class="progress-container">
+                    <div class="progress-labels">
+                        <span class="step-label">Step 5 of 5</span>
+                        <span class="froth-label">Foam / Topping</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <h2 class="title">Choose Your Foam</h2>
+                <p class="subtitle">Pick a finishing touch to personalize the matcha.</p>
+
+                <div class="toppings-grid">
+                    <button class="topping-card choice-card" data-group="foam" data-value="strawberry-foam" type="button">Strawberry Foam</button>
+                    <button class="topping-card choice-card" data-group="foam" data-value="light-foam" type="button">Light Foam</button>
+                    <button class="topping-card choice-card" data-group="foam" data-value="vanilla-foam" type="button">Vanilla Foam</button>
+                </div>
+
+                <div class="action-grid toppings-actions">
+                    <button id="back-to-sweetness-btn" class="btn btn-white btn-half">← Back</button>
+                    <button id="finish-matcha-btn" class="btn btn-dark btn-half">Finish Matcha ✓</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Result Section -->
+        <section id="result" class="section-result hidden-section">
+            <div class="container text-center">
+                <div class="award-badge"><i data-lucide="trophy"></i> Perfect Whisk!</div>
+                <h2 class="title">Your Matcha Result</h2>
+                <p class="subtitle">You did it. Your matcha is ready!</p>
+
+                <div class="result-layout">
+                    <div class="result-card">
+                        <div class="tag-badge" id="result-tag">Your Matcha</div>
+                        <div class="result-image-container">
+                            <img id="result-image" src="assets/img/iced matcha lattee.jpg" alt="" class="result-image">
+                        </div>
+                        <h3 class="drink-name" id="result-name">Build Your Matcha</h3>
+                        <p class="drink-flavor" id="result-flavor">Finish the steps and pick a foam to reveal your drink photo and description.</p>
+                        
+                        <div class="drink-icons">
+                            <div class="icon-item">
+                                <div class="icon-circle bg-fog icon-water">
+                                    <i data-lucide="droplets"></i>
+                                </div>
+                                <span>Milk</span>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon-circle bg-berry icon-sweet">
+                                    <i data-lucide="heart"></i>
+                                </div>
+                                <span>Sweet</span>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon-circle bg-gray icon-ice">
+                                    <i data-lucide="ice-cream-cone"></i>
+                                </div>
+                                <span>Ice</span>
+                            </div>
+                        </div>
+
+                        <div class="score-box">
+                            <div class="score-labels">
+                                <span>Whisk Score</span>
+                                <span class="score-value" id="result-score-text">95/100</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" id="result-score-bar" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-details">
+                        <div class="details-card">
+                            <h4>Recipe Details</h4>
+                            <div class="detail-group">
+                                <h5>Matcha Type</h5>
+                                <p id="result-matcha-type">Ceremonial Matcha</p>
+                            </div>
+                            <div class="detail-group">
+                                <h5>Ice Amount</h5>
+                                <p id="result-ice-amount">Medium</p>
+                            </div>
+                            <div class="detail-group">
+                                <h5>Sweetness</h5>
+                                <p id="result-sweetness">Medium</p>
+                            </div>
+                            <div class="detail-group">
+                                <h5>Toppings</h5>
+                                <p id="result-toppings">Strawberry Foam</p>
+                            </div>
+                        </div>
+                        <div class="action-grid">
+                            <button id="save-recipe-btn" class="btn btn-dark btn-full"><i data-lucide="heart"></i> Save Recipe</button>
+                            <button type="button" id="customize-again-btn" class="btn btn-white btn-half"><i data-lucide="sliders-horizontal"></i> Customize again</button>
+                            <button onclick="window.location.href='#home'; location.reload();" class="btn btn-white btn-half"><i data-lucide="rotate-ccw"></i> Make Again</button>
+                            <button type="button" class="btn btn-white btn-half"><i data-lucide="share-2"></i> Share</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rewards Section -->
+        <section id="rewards" class="section-rewards hidden-section">
+            <div class="container text-center">
+                <h2 class="title">Matcha Journey</h2>
+                <p class="subtitle">Unlock sweet milestones as you become a matcha master.</p>
+
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-berry-light text-usu"><i data-lucide="trophy"></i></div>
+                        <div class="stat-text">
+                            <p class="stat-label">Total Badges</p>
+                            <p class="stat-value">3 / 7</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-berry-light text-usu"><i data-lucide="star"></i></div>
+                        <div class="stat-text">
+                            <p class="stat-label">Level 2 Barista</p>
+                            <p class="stat-value">450 XP</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-container">
+                    <div class="roadmap-line"></div>
+                    
+                    <div class="milestone completed">
+                        <div class="milestone-node bg-usu text-white"><i data-lucide="coffee"></i></div>
+                        <div class="milestone-card">
+                            <div class="milestone-header">
+                                <h3>First Sip</h3>
+                                <span class="badge-done">DONE</span>
+                            </div>
+                            <p>Complete your first matcha</p>
+                            <div class="milestone-progress">
+                                <div class="progress-bar-bg"><div class="progress-bar-fill w-100"></div></div>
+                                <span>1/1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="milestone completed reverse">
+                        <div class="milestone-node bg-usu text-white"><i data-lucide="wind"></i></div>
+                        <div class="milestone-card">
+                            <div class="milestone-header">
+                                <h3>Whisk Beginner</h3>
+                                <span class="badge-done">DONE</span>
+                            </div>
+                            <p>Finish 3 whisk sessions</p>
+                            <div class="milestone-progress">
+                                <div class="progress-bar-bg"><div class="progress-bar-fill w-100"></div></div>
+                                <span>3/3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="milestone in-progress">
+                        <div class="milestone-node bg-white text-usu border-usu"><i data-lucide="sparkles"></i></div>
+                        <div class="milestone-card active-card">
+                            <div class="milestone-header">
+                                <h3>Topping Collector</h3>
+                            </div>
+                            <p>Try 3 toppings</p>
+                            <div class="milestone-progress">
+                                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 67%"></div></div>
+                                <span>2/3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="milestone locked reverse">
+                        <div class="milestone-node bg-fog text-meadow"><i data-lucide="lock"></i></div>
+                        <div class="milestone-card locked-card">
+                            <div class="milestone-header">
+                                <h3>Perfect Whisk</h3>
+                            </div>
+                            <p>Get a whisk score above 90</p>
+                            <div class="milestone-progress">
+                                <div class="progress-bar-bg"><div class="progress-bar-fill w-0"></div></div>
+                                <span>0/1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Saved Recipes Section -->
+        <section id="saved" class="section-saved hidden-section">
+            <div class="container text-center">
+                <h2 class="title">Saved Recipes</h2>
+                <p class="subtitle">Your favorite matcha creations, all in one place.</p>
+
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="favorites"><i data-lucide="heart"></i> Favorites</button>
+                    <button class="filter-btn" data-filter="strawberry">Strawberry</button>
+                    <button class="filter-btn" data-filter="classic">Classic</button>
+                </div>
+
+                <p id="saved-empty-state" class="subtitle">No saved recipes yet. Make a drink and tap Save Recipe.</p>
+                <div class="recipe-grid" id="recipe-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
